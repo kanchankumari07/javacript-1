@@ -1,18 +1,24 @@
 let pokemonlist=[
-{name:"Bulbasaur",
+{
+  name:"Bulbasaur",
   height:2,
   type:['grass', 'poison'],
+},
 
 
-name:'Venusaur',
+  {
+    name:'Venusaur',
   height:2,
   type: ['grass', 'poison'],
+  },
+  
 
 
-   name: "weedle",
+  {
+    name: "weedle",
   height:2,
   type: ['bug','poison'],
-}
+},
 
 ]
   console.log(pokemonlist);
