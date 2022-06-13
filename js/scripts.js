@@ -23,6 +23,6 @@ let pokemonlist=[
 ]
   console.log(pokemonlist);
   for (var i = 0; i < pokemonlist.length; i++) {
-    document.write( name + "</p>");
-  }
+  document.write(pokemonlist[i].name + "</p>");
+}
 
