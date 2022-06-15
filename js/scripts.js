@@ -25,4 +25,16 @@ let pokemonlist=[
   for (var i = 0; i < pokemonlist.length; i++) {
   document.write(pokemonlist[i].name + "</p>");
 }
+  let add = function(number1, number2) => {
+  return number1 + number2;
+};
+let substract =function (number1, number2) => {
+return number1 + number2;
+};
+let multiply =function (number1, number2) => {
+return number1 + number2;
+};
+let divide =function (number1, number2) => {
+return number1 + number2;
+};
 
