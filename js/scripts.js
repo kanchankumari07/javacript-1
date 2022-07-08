@@ -21,20 +21,28 @@ let pokemonlist=[
 },
 
 ]
-  console.log(pokemonlist);
-  for (var i = 0; i < pokemonlist.length; i++) {
-  document.write(pokemonlist[i].name + "</p>");
-}
-  let add = function(number1, number2) => {
-  return number1 + number2;
-};
-let substract =function (number1, number2) => {
-return number1 + number2;
-};
-let multiply =function (number1, number2) => {
-return number1 + number2;
-};
-let divide =function (number1, number2) => {
-return number1 + number2;
-};
+    console.log(pokemonlist);
+
+  }
+  pokemonlist.forEach(function(pokemon){
+    console.log('name','height','type');
+  };
+  let pokemonRepository = (function () {
+    let pokemonList = [];
+
+    function add(pokemon) {
+      pokemonList.push(pokemon);
+    }
+
+    function getAll() {
+      return pokemonList;
+    }
+
+    return {
+      add: add,
+      getAll: getAll
+    };
+  })();
+
+  
 
