@@ -1,70 +1,61 @@
 let pokemonRepository = (function () {
-  let pokemonlist = [
-    {
-      name: "Bulbasaur",
-      height: 2,
-      type: ["grass", "poison"],
-    },
+    let repository = [
+        {
+            name: 'Bulbasaur',
+            height: 7,
+            type: ['grass', 'poison']
+        },
+        {
+            name: 'Squirtle',
+            height: 5,
+            type: ['water']
+        },
+        {
+            name: 'Charmander',
+            height: 4.5,
+            type: ['fire', 'flying']
+        }
+    ];
 
-    {
-      name: "Venusaur",
-      height: 2,
-      type: ["grass", "poison"],
-    },
+    function add(pokemon) {
+        repository.push(pokemon);
+    }
 
-    {
-      name: "weedle",
-      height: 2,
-      type: ["bug", "poison"],
-    },
-  ];
+    function getAll() {
+        return repository;
+    }
 
-  function add(pokemon) {
-    pokemonList.push(pokemon);
-  }
+    function addListItem(pokemon) {
+        let $pokemonList = document.querySelector('.pokemon-list');
+        let $listItem = document.createElement('li')
+        let $button = document.createElement('button');
+        $button.innerHTML = pokemon.name
 
-  function getAll() {
-    return pokemonList;
-  }
- 
-  function addListItem(pokemon) {
-  const $pokemonList = document.querySelector('.pokemon-list');
-  const $listItem = document.createElement('li')
-  const $button = document.createElement('button');
-  $button.innerHTML = pokemon.name
+        $pokemonList.appendChild($listItem);
+        $listItem.appendChild($button);
+        $button.classList.add('pokemon-button');
+        // event listener within function
+        // $button.addEventListener('click', function (e) {
+        //     showDetails(pokemon);
+        // })
+        clickPokemonButtonHandler($button, pokemon);
 
-  $pokemonList.appendChild($listItem);
-  $listItem.appendChild($button);
-  $button.classList.add('pokemon-button');
-  // event listener within function
-  // $button.addEventListener('click', function (e) {
-  //     showDetails(pokemon);
-  // })
-  clickPokemonButtonHandler($button, pokemon);
+    }
+    // Optional bonus
+    function clickPokemonButtonHandler(button, pokemonObject) {
+        button.addEventListener('click', function () {
+            showDetails(pokemonObject)
+        })
+    }
 
-}
-// Optional bonus
-function clickPokemonButtonHandler(button, pokemonObject) {
-  button.addEventListener('click', function () {
-      showDetails(pokemonObject)
-  })
-}
+    function showDetails(pokemon) {
+        console.log(pokemon)
+    }
 
-function showDetails(pokemon) {
-  console.log(pokemon)
-}
-
-return {
-  add: add,
-  getAll: getAll,
-  addListItem: addListItem
-};
+    return {
+        add: add,
+        getAll: getAll,
+        addListItem: addListItem
+    };
 })();
 
-
-
-
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-pokemonRepository.addListItem(pokemon)
-})
