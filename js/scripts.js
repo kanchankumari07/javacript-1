@@ -115,8 +115,8 @@ function loadList() {
   }).then(function (json) {
     json.results.forEach(function (item) {
       let pokemon = {
-        name: item.name,
-        detailsUrl: item.url
+        name: pokemon.name,
+        detailsUrl: pokemon.url
       };
       add(pokemon);
     });
@@ -125,14 +125,14 @@ function loadList() {
   })
 }
 function loadDetails(item) {
-  let url = item.detailsUrl;
+  let url = pokemon.detailsUrl;
   return fetch(url).then(function (response) {
     return response.json();
   }).then(function (details) {
     // Now we add the details to the item
-    item.imageUrl = details.sprites.front_default;
-    item.height = details.height;
-    item.types = details.types;
+    pokemon.imageUrl = details.sprites.front_default;
+    pokemon.height = details.height;
+    pokemon.types = details.types;
   }).catch(function (e) {
     console.error(e);
   });
