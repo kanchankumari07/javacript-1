@@ -16,16 +16,19 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
   function addListItem(pokemon) {
-    let pokemonList = document.querySelector(".pokemon-list");
-    let listpokemon = document.createElement("li");
-    let button = document.createElement("button");
+    console.log(pokemon);
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listpokemon = document.createElement('li');
+    let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add("button-class");
+    button.classList.add('button-class');
+    pokemonList.appendChild(listpokemon);
     listpokemon.appendChild(button);
-  
-    button.addEventListener("click", function(event) {
+
+    button.addEventListener('click', function (event) {
       showDetails(pokemon);
     });
+  }
   }
 
   function loadList() {
