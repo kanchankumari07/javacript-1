@@ -1,4 +1,4 @@
-let pokemonRepository = (function () {
+et pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   
@@ -17,12 +17,15 @@ let pokemonRepository = (function () {
   }
  
   function addListItem(pokemon) {
-    console.log(pokemon);
-    let pokemonList = document.querySelector(".pokemon-list");
+    
+    let pokemonList = document.querySelector(".list-group");;
     let listpokemon = document.createElement("li");
+    listpokemon.classList.add('group-list-item');
     let button = document.createElement("button");
     button.innerText = pokemon.name;
-    button.classList.add("button-class");
+    button.classList.add( 'btn', 'btn-primary','my-1');
+   
+    button.setAttribute('data-toggle', 'modal');
 
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
@@ -72,10 +75,14 @@ function showDetails(item) {
      showModal(item.name, item.height,item.imageUrl);
  });
 }
-let modalContainer=document.querySelector('#modal-container');
+
+$('#myModal').modal('show')
+
 function showModal(title, text,imageUrl) {
+  let modalContainer=document.querySelector('#myModal');
   // Clear all existing modal content
   modalContainer.innerHTML = '';
+  $('#myModal').modal('show')
 
   let modal = document.createElement('div');
   modal.classList.add('modal');
@@ -108,23 +115,15 @@ function showModal(title, text,imageUrl) {
 }
 
 function hideModal() {
-  modalContainer.classList.remove('is-visible');
+ modalContainer.classList.remove('is-visible');
 }
 
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
     hideModal();
   }
 });
 
-modalContainer.addEventListener('click', (e) => {
-  // Since this is also triggered when clicking INSIDE the modal container,
-  // We only want to close if the user clicks directly on the overlay
-  let target = e.target;
-  if (target === modalContainer) {
-    hideModal();
-  }
-});
 
   return {
     add: add,
@@ -142,6 +141,11 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addListItem(pokemon);
   });
 });  
+
+
+
+
+ 
 
 
 
